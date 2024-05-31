@@ -1,69 +1,101 @@
-# Study Gymon Web Application
+# Study Gymon
 
-Welcome to the Study Gymon Web Application repository! This project is a web application built using the Django framework and SQLite, specifically designed to assist South African matriculants in their exam preparation. Whether you're a student looking for a tool to organize your study materials or an educator interested in providing resources to students, Study Gymon is here to help.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-
-The Study Gymon Web Application is a comprehensive study tool tailored for South African matriculants preparing for their final exams. It provides users with access to a range of features and resources to aid in their exam preparation, including study notes, practice questions, flashcards, and more. Built using the Django framework and SQLite database, the application offers a user-friendly interface and robust functionality to support students throughout their exam journey.
+Study Gymon is a Django-based web application designed to help South African matriculants collaborate and study more effectively. It provides a platform where students can form study groups, share resources, schedule study sessions, and track their progress. The application uses MySQL as its database.
 
 ## Features
 
-- **User Authentication:** Secure user authentication system allows students to register, log in, and access personalized study materials.
-- **Subject Notes:** Users can access and download study notes for various subjects, including Mathematics, Science, English, and more.
-- **Practice Questions:** Extensive database of practice questions with solutions and explanations to help students test their knowledge and understanding.
-- **Flashcards:** Interactive flashcards feature allows users to create, review, and quiz themselves on key concepts and definitions.
-- **Exam Timetable:** Customizable exam timetable feature enables students to plan and organize their study schedule leading up to the exams.
-- **Progress Tracking:** Track and monitor study progress over time with visual graphs and statistics.
-- **Community Forum:** Collaborative community forum where students can ask questions, share study tips, and engage with fellow matriculants.
+- **User Registration and Authentication**: Secure sign-up and login for students.
+- **Profile Management**: Users can create and manage their profiles.
+- **Study Groups**: Create and join study groups based on subjects and interests.
+- **Resource Sharing**: Upload and share study materials like notes, past papers, and textbooks.
+- **Study Session Scheduling**: Schedule and manage study sessions with reminders.
+- **Progress Tracking**: Track individual and group study progress.
+- **Discussion Forums**: Engage in subject-specific discussions.
 
 ## Getting Started
 
-To get started with the Study Gymon Web Application, follow these steps:
+These instructions will help you set up the development environment on your local machine.
 
-1. **Clone the Repository:** Clone this repository to your local machine using Git:
+### Prerequisites
 
-    ```
-    git clone https://github.com/7irelo/Study_Gymon.git
-    ```
+- Python 3.x
+- Django 3.x
+- MySQL
+- Git
 
-2. **Set Up the Environment:** Set up a virtual environment for the project and install the required dependencies listed in the `requirements.txt` file.
+### Installation
 
-3. **Configure the Database:** Configure the database settings in the `settings.py` file, specifying the SQLite database path and other settings as needed.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/7irelo/Study_Gymon.git
+   cd Study_Gymon
+   ```
 
-4. **Run Migrations:** Apply database migrations to create the necessary tables in the SQLite database.
+2. **Create a virtual environment and activate it**
+   ```bash
+   python3 -m venv env
+   source env/bin/activate   # On Windows use `env\Scripts\activate`
+   ```
 
-    ```
-    python manage.py migrate
-    ```
+3. **Install the required packages**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-5. **Create Superuser:** Create a superuser account to access the Django admin panel and manage the application.
+4. **Set up the MySQL database**
+   - Ensure MySQL is installed and running.
+   - Create a database named `studygymon`.
+   - Update the database settings in `settings.py`:
+     ```python
+     DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.mysql',
+             'NAME': 'studygymon',
+             'USER': 'your_mysql_user',
+             'PASSWORD': 'your_mysql_password',
+             'HOST': 'localhost',
+             'PORT': '3306',
+         }
+     }
+     ```
 
-    ```
-    python manage.py createsuperuser
-    ```
+5. **Apply migrations**
+   ```bash
+   python manage.py migrate
+   ```
 
-6. **Run the Development Server:** Start the Django development server to run the application locally.
+6. **Create a superuser**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-    ```
-    python manage.py runserver
-    ```
+7. **Run the development server**
+   ```bash
+   python manage.py runserver
+   ```
 
-7. **Explore the Application:** Once the development server is running, open your web browser and navigate to the URL specified by Django. You should see the homepage of the StudyBuddy application.
-
-8. **Start Using StudyBuddy:** Sign up for an account or log in with your credentials to start exploring the features and resources available to you.
+8. **Access the application**
+   Open your browser and go to `http://127.0.0.1:8000`.
 
 ## Contributing
 
-Contributions to the Study Gymon Web Application project are welcome and encouraged. Whether you're fixing a bug, implementing a new feature, or improving documentation, your contributions help make the application better for students. To contribute, simply fork the repository, make your changes, and submit a pull request. Be sure to follow the contribution guidelines outlined in the repository's documentation.
+We welcome contributions! Here’s how you can help:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a Pull Request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE), which means you are free to use, modify, and distribute the code for both personal and commercial purposes. By contributing to this project, you agree to license your contributions under the same terms.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+## Contact
+
+If you have any questions or suggestions, feel free to open an issue or contact us at tirelo.eric@gmail.com.
+
+---
+
+Thank you for using Study Gymon! We hope it helps you achieve your academic goals.
