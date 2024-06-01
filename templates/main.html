@@ -152,7 +152,18 @@
     </style>
   </head>
   <body>
-    {% include "navbar.html" %} {% block content %} {% endblock %} {% include "footer.html"%}
+    {% include "navbar.html" %} 
+    
+    {% if messages %}
+
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{message.tag}}" {% endif %}>{{message}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% block content %} {% endblock %} {% include "footer.html"%}
     <script>
       const toggle_btn = document.getElementById("toggle_btn");
       const dropdown_menu = document.getElementById("dropdown_menu");

@@ -6,15 +6,25 @@
     grid-template-columns: 1fr 3fr;
     margin: 20px;
   }
+
+  @media (max-width: 1094px) {
+    .home-container {
+      grid-template-columns: 3fr 1fr;
+      margin: 20px;
+    }
+    .browser {
+      display: none;
+    }
+  }
 </style>
 
 <div>
   <form action="{% url 'home' %}" method="get">
-    <input type="text" name="q" placeholder="Search Rooms">
+    <input type="text" name="q" placeholder="Search Rooms" />
   </form>
 </div>
 <div class="home-container">
-  <div>
+  <div class="browser">
     <h3>Browse Subjects</h3>
     <hr />
     <div>
@@ -27,6 +37,7 @@
     {% endfor %}
   </div>
   <div>
+    <h5>{{room_count}} rooms available</h5>
     <a href="{% url 'create-room' %}"><button>Create Room</button></a>
     <div>
       {% for room in rooms %}
