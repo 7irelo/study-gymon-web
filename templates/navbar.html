@@ -1,5 +1,102 @@
 {% block content %}
 
+<style>
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+  }
+
+  a:hover {
+    color: hsl(180, 100%, 30%);
+  }
+
+  .navbar {
+    width: 100%;
+    height: 64px;
+    padding: 20px;
+    box-shadow: 0px 5px 5px hsla(0, 0%, 0%, 0.555);
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+  }
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .navbar .links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar .toggle_btn {
+    color: #000;
+    font-size: 2.5rem;
+    cursor: pointer;
+    display: none;
+  }
+
+  .dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 64px;
+    height: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .dropdown_menu.open {
+    height: auto;
+  }
+  .dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dropdown_menu .action_btn {
+    width: 100%;
+    text-align: center;
+  }
+  @media (max-width: 992px) {
+    .navbar .links,
+    .navbar .action_btn {
+      display: none;
+    }
+
+    .navbar .toggle_btn {
+      display: block;
+    }
+
+    .dropdown_menu {
+      display: block;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .dropdown_menu {
+      left: 2rem;
+      width: unset;
+    }
+  }
+</style>
+
 <header>
   <nav class="navbar">
     <div class="logo"><a href="/">Study Gymon</a></div>
@@ -13,7 +110,7 @@
     <a href="{% url 'logout' %}" class="action_btn">Logout</a>
     {% else %}
     <a href="{% url 'login' %}" class="action_btn">Login</a>
-    <a href="{% url 'login' %}" class="action_btn">Register</a>
+    <a href="{% url 'register' %}" class="action_btn">Sign up</a>
     {% endif %}
     <div class="toggle_btn" id="toggle_btn">&Congruent;</div>
   </nav>
@@ -22,7 +119,12 @@
     <li><a href="/">About</a></li>
     <li><a href="/">Services</a></li>
     <li><a href="/">Contact</a></li>
-    <li><a class="action_btn">Get Started</a></li>
+    {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout' %}" class="action_btn">Logout</a></li>
+    {% else %}
+    <li><a href="{% url 'login' %}" class="action_btn">Login</a></li>
+    <li><a href="{% url 'register' %}" class="action_btn">Sign up</a></li>
+    {% endif %}
   </div>
 </header>
 
