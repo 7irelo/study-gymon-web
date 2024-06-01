@@ -1,14 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% include 'navbar.html' %}
-    {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Gymon</title>
+    <style>
+      /* Reset default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    {% endblock %}
-</body>
+      body {
+        height: 100vh;
+        font-family: Bahnschrift, sans-serif;
+        background-color: #fff;
+        /*background-image: url("background.jpg");*/
+        background-size: cover;
+        background-position: center;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 1rem;
+      }
+
+      a:hover {
+        color: aqua;
+      }
+
+      header {
+        position: relative;
+        padding: 0 2rem;
+      }
+
+      .navbar {
+        width: 100%;
+        height: 64px;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .navbar .links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .action_btn {
+        background-color: green;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: scale 0.2 ease;
+      }
+
+      .action_btn:hover {
+        scale: 1.05;
+        color: #fff;
+      }
+
+      .action_btn:active {
+        scale: 0.95;
+      }
+
+      .navbar .toggle_btn {
+        color: #000;
+        font-size: 2.5rem;
+        cursor: pointer;
+        display: none;
+      }
+
+      .dropdown_menu {
+        display: none;
+        position: absolute;
+        right: 2rem;
+        top: 64px;
+        height: 0;
+        width: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: height 0.2 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .dropdown_menu.open {
+        height: 240px;
+      }
+
+      .dropdown_menu li {
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dropdown_menu .action_btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      @media (max-width: 992px) {
+        .navbar .links,
+        .navbar .action_btn {
+          display: none;
+        }
+
+        .navbar .toggle_btn {
+          display: block;
+        }
+
+        .dropdown_menu {
+          display: block;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .dropdown_menu {
+          left: 2rem;
+          width: unset;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% include "navbar.html" %} {% block content %} {% endblock %}
+    <script>
+      const toggle_btn = document.getElementById("toggle_btn");
+      const dropdown_menu = document.getElementById("dropdown_menu");
+
+      toggle_btn.addEventListener("click", (event) => {
+        dropdown_menu.classList.toggle("open");
+        const isOpen = dropdown_menu.classList.contains("open");
+        toggle_btn.textContent = isOpen ? "⨯" : "≡";
+      });
+    </script>
+  </body>
 </html>

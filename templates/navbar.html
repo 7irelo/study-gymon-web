@@ -1,11 +1,24 @@
+{% block content %}
+
 <header>
-    <div>
-        <h1>Study Gymon</h1>
-    </div>
-    <div>
-        <ul>
-            <li><a>Home</a></li>
-            <li><a>Room</a></li>
-        </ul>
-    </div>
+  <nav class="navbar">
+    <div class="logo"><a href="/">Study Gymon</a></div>
+    <ul class="links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/">About</a></li>
+      <li><a href="/">Services</a></li>
+      <li><a href="/">Contact</a></li>
+    </ul>
+    <a class="action_btn">Get Started</a>
+    <div class="toggle_btn" id="toggle_btn">&Congruent;</div>
+  </nav>
+  <div class="dropdown_menu" id="dropdown_menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/">About</a></li>
+    <li><a href="/">Services</a></li>
+    <li><a href="/">Contact</a></li>
+    <li><a class="action_btn">Get Started</a></li>
+  </div>
 </header>
+
+{% endblock %}
