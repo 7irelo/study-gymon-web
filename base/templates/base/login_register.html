@@ -13,8 +13,7 @@
 {% else%}
 <div>
   <form action="" method="POST">
-    {% csrf_token %}
-
+    {% csrf_token %} {{form.as_p}}
     <input type="submit" value="Sign up" />
     <a href="{% url 'register' %}" class="action_btn">Login</a>
   </form>

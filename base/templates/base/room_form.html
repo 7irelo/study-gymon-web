@@ -1,13 +1,32 @@
-{% extends 'main.html' %} 
-
-{% block content %}
+{% extends 'main.html' %} {% block content %}
 
 <div>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Submit">
-    </form>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="form__group">
+      <label for="room_subject">Subject</label>
+      <input required type="text" name="subject" list="subject-list" />
+      <datalist id="subject-list">
+        <select name="" id="room_subject">
+          {% for subject in subjects %}
+          <option value="{{subject}}">{{subject}}</option>
+          {% endfor %}
+        </select>
+      </datalist>
+    </div>
+
+    <div class="form__group">
+      <label for="room_name">Room Name</label>
+      {{form.name}}
+    </div>
+
+    <div class="form__group">
+      <label for="room_description">Room Description</label>
+      {{form.description}}
+    </div>
+
+    <input type="submit" value="Submit" />
+  </form>
 </div>
 
 {% endblock %}
