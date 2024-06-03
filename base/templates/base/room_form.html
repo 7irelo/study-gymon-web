@@ -5,11 +5,35 @@
     {% csrf_token %}
     <div class="form__group">
       <label for="room_subject">Subject</label>
-      <input required type="text" name="subject" list="subject-list" />
+      <input
+        required
+        type="text"
+        value="{{room.subject}}"
+        name="subject"
+        list="subject-list"
+      />
       <datalist id="subject-list">
         <select name="" id="room_subject">
           {% for subject in subjects %}
           <option value="{{subject}}">{{subject}}</option>
+          {% endfor %}
+        </select>
+      </datalist>
+    </div>
+
+    <div class="form__group">
+      <label for="room_topic">Topic</label>
+      <input
+        required
+        type="text"
+        value="{{room.topic}}"
+        name="topic"
+        list="topic-list"
+      />
+      <datalist id="topic-list">
+        <select name="" id="room_topic">
+          {% for topic in topics %}
+          <option value="{{topic}}">{{topic}}</option>
           {% endfor %}
         </select>
       </datalist>

@@ -1,0 +1,16 @@
+{% extends 'main.html' %} 
+
+{% block content %} 
+
+<h3>Browse Subjects</h3>
+<hr />
+<div>
+  <a href="{% url 'home' %}">All</a>
+</div>
+{% for subject in subjects %}
+<div>
+    <p>{{subject.name}}</p>
+</div>
+{% endfor %}
+
+{%endblock %}

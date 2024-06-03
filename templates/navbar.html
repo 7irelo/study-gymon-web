@@ -34,6 +34,8 @@
     font-weight: bold;
   }
 
+  
+
   .navbar .links {
     display: flex;
     gap: 2rem;
@@ -94,33 +96,50 @@
       left: 2rem;
       width: unset;
     }
+
+    .navbar .searchbar{
+    display: noney;
+  }
   }
 </style>
 
 <header>
   <nav class="navbar">
     <div class="logo"><a href="/">Study Gymon</a></div>
-    <ul class="links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/room">Room</a></li>
-      <li><a href="/">Services</a></li>
-      <li><a href="/">Contact</a></li>
-    </ul>
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'logout' %}" class="action_btn">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}" class="action_btn">Login</a>
-    <a href="{% url 'register' %}" class="action_btn">Sign up</a>
-    {% endif %}
+    <div class="searchbar">
+      <form action="{% url 'home' %}" method="get">
+        <input type="text" name="q" placeholder="Search Rooms" />
+      </form>
+    </div>
+    <div class="links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'subjects' %}">Subjects</a></li>
+    <li><a href="/">Services</a></li>
+    <li><a href="/">Contact</a></li>
+    </div>
+    <div>
+      <ul class="links">
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" class="action_btn">Logout</a></li>
+        <li><a href="{% url 'update-user' %}" class="action_btn">Profile</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" class="action_btn">Login</a></li>
+        <li><a href="{% url 'register' %}" class="action_btn">Sign up</a></li>
+        {% endif %}
+    </div>
+    
     <div class="toggle_btn" id="toggle_btn">&Congruent;</div>
   </nav>
   <div class="dropdown_menu" id="dropdown_menu">
-    <li><a href="/">Home</a></li>
-    <li><a href="/">About</a></li>
-    <li><a href="/">Services</a></li>
-    <li><a href="/">Contact</a></li>
+    <div>
+      <form action="{% url 'home' %}" method="get">
+        <input type="text" name="q" placeholder="Search Rooms" />
+        <input type="submit" value="Search">
+      </form>
+    </div>
     {% if request.user.is_authenticated %}
     <li><a href="{% url 'logout' %}" class="action_btn">Logout</a></li>
+    <li><a href="{% url 'update-user' %}" class="action_btn">Profile</a></li>
     {% else %}
     <li><a href="{% url 'login' %}" class="action_btn">Login</a></li>
     <li><a href="{% url 'register' %}" class="action_btn">Sign up</a></li>

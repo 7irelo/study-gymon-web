@@ -19,15 +19,9 @@
 </style>
 {% if request.user.is_authenticated %}
 <div>
-  <h1>Hello {{request.user}}</h1>
+  <h1>Hello {{request.user.username}}</h1>
 </div>
 {% endif %}
-
-<div>
-  <form action="{% url 'home' %}" method="get">
-    <input type="text" name="q" placeholder="Search Rooms" />
-  </form>
-</div>
 <div class="home-container">
   <div class="browser">{% include 'base/subjects_component.html' %}</div>
   <div>
