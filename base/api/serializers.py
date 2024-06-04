@@ -1,8 +1,7 @@
-import json
+from rest_framework.serializers import ModelSerializer
 from base.models import Room
 
-def roomSerialize(pk):
-    data = {
-        "field1": Room.objects.get(id=pk)
-    }
-    return json.dumps(data)
+class RoomSerializer(ModelSerializer):
+    class Meta:
+        model = Room
+        fields = "__all__"
