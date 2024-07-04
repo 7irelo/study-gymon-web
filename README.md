@@ -27,8 +27,8 @@ These instructions will help you set up the development environment on your loca
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/7irelo/Study_Gymon.git
-   cd Study_Gymon
+   git clone https://github.com/7irelo/study-gymon-web.git
+   cd study-gymon-web
    ```
 
 2. **Create a virtual environment and activate it**
